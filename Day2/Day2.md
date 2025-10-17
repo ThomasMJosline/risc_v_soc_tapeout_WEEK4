@@ -135,5 +135,45 @@ setplot dc1
 
 Here as L=0.15u, which is a short channel, the Id vs Vgs will be linear because of velocity saturation.
 
-    
+---
+
+## CMOS Voltage Transfer characteristics
+
+### MOSFET as switch
+
+<div align="center"><img width="873" height="533" alt="image" src="https://github.com/user-attachments/assets/64bd5892-c732-4f5d-a27f-c1c05b91fbcf" /></div>
+
+CMOS - Complementary MOS
+
+- When Vin = Vdd, PMOS is off and NMOS is ON
+
+<div align="center"><img width="1225" height="729" alt="image" src="https://github.com/user-attachments/assets/4da49a78-ce71-4b68-bc50-414a69c78b77" /></div>
+
+Here Vout = 0 as there is direct connection between Vout and ground.
+
+- When Vin = 0, PMOS is on and NMOS is off
+  
+  <div align="center"><img width="321" height="429" alt="image" src="https://github.com/user-attachments/assets/32068504-b8f2-496f-97f6-24eaf298b2b5" /></div>
+
+  Here Vout = Vdd as there is direct connection between Vout and Vdd.
+
+  This realizes as **inverter**.
+
+<div align="center"><img width="639" height="474" alt="image" src="https://github.com/user-attachments/assets/96d4570b-80b0-4b9e-a537-0297baf12a79" /></div>
+
+When Vin is:
+ - Vdd, the capacitor is discharged.
+ - 0, the capacitor is charged.
+
+   <div align="center"><img width="1320" height="633" alt="image" src="https://github.com/user-attachments/assets/36a48bcd-8711-45d0-8d99-c193fd18482d" /></div>
+
+  <div align="center"><img width="818" height="220" alt="image" src="https://github.com/user-attachments/assets/98822f2a-a9d5-4825-85aa-f0289e09e83a" />
+</div>  
+
+
+#### NMOS and PMOS drain current variation with gate voltage
+<div align="center"><img width="905" height="472" alt="image" src="https://github.com/user-attachments/assets/76ff0aa5-59f8-4f6e-85e3-163df4d1804b" /></div>
+
+
+ 
 
