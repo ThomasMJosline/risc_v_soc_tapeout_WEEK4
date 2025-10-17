@@ -8,7 +8,7 @@ The logic gates that are used implement the designs that we have discussed befor
 
 ## Introduction to basic element in circuit design - NMOS transistor
 
-<div align="center"><img src="images/nmos.png" alt="Alt Text" width="500"/> </div> 
+<div align="center"><img width="876" height="397" alt="nmos" src="https://github.com/user-attachments/assets/65ee20d3-8526-4b10-b6e0-c74d591c5270" /></div> 
 
 NMOS, N-Channel Metal Oxide Semiconductor:
 - 4 terminal device
@@ -27,7 +27,8 @@ NMOS, N-Channel Metal Oxide Semiconductor:
 - When the source, drain and the body terminals are grounded and the Gate to source voltage (Vgs) is made positive, the region of P substrate under the gate region gets depleted of positive charge carriers. When Vgs is increased further, the depletion region increases and at a point the surface of the substrate near the gate accumulates -ve charge carriers. This is called **strong inversion** and the value of Vgs at which inversion happens is called **threshold volatge**.
 - When increasing Vgs further, there won't be increase in   depletion layer width, but electrons from the heavily doped source region are drawn to the  region under gate. This forms a continuous N channel between source and drain. The conductivity of this channel can be controlled by Vgs.
 - When there is voltage between source and body (Vsb a +ve value) it increases the depletion region between source and body and also causes the value of threshold voltage to go up. The equation governing the thresold voltage will be:
-<div align="center"><img src="images/thres_Vsb.png" alt="Alt Text" width="500"/> </div> 
+<div align="center"><img width="475" height="94" alt="thres_Vsb" src="https://github.com/user-attachments/assets/5d2fe3b2-7d29-4d85-b549-bde31f5ae725" />
+</div> 
    
   - Vto : Thresold voltage for Vsb = 0. 
   - $\gamma$ : Body effect coefficient.
@@ -36,9 +37,8 @@ NMOS, N-Channel Metal Oxide Semiconductor:
 
   Vto, $\gamma$,  $\Phi$<sub>f</sub> are constants particular to the foundry where the ICs are manufactured. These constants are the models that are given to a SPICE simulation.
 
-<div align="center"><img src="images/thres_Vsb_1.png" alt="Alt Text" width="500"/> </div>
-
-
+<div align="center"><img width="653" height="395" alt="thes_Vsb_1" src="https://github.com/user-attachments/assets/4651b72f-4b51-4fd3-99bb-712f7fb96b4c" />
+</div>
 
 
 ### Regions of operation for NMOS : Resistive & Saturaion regions
@@ -52,7 +52,7 @@ NMOS, N-Channel Metal Oxide Semiconductor:
 Impact of Vds and Vgs on drain current
   
   - As Vgs is increased the range of values of Vds for which the device stays in linear region of operation increases:
-    <div align="center"><img src="images/resistor_op.png" alt="Alt Text" width="500"/> </div>
+    <div align="center"><img width="1501" height="672" alt="resistor_op" src="https://github.com/user-attachments/assets/2a788831-1ed2-4705-8d9a-a669abc3642a" /></div>
 
     ? How do we calculate Id for different values of Vgs and at every value Vgs, sweep Vds for 0 to (Vgs - Vt) using linear equation for Id?
     - Done using SPICE simulations
@@ -114,6 +114,70 @@ SPICE stands for Simulation Program with Integrated Circuit Emphasis. SPICE is u
  - Simulation Commands : These specify the range of voltage values to sweep across for parameters such as Vds or Vgs etc.
 
 ### Doing Simulation in NGSPICE
+
+To use the Sky130nm technology model files for simulations:
+```$git clone https://github.com/kunalg123/sky130CircuitDesignWorkshop.git```
+
+3 Important Files in the Repo:
+
+- ```/sky130CircuitDesignWorkshop/design/sky130_fd_pr/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.pm3.spice```
+    This file contains the SPICE model for the NFET (N-channel MOSFET) in the Sky130 process at typical (tt) conditions.
+
+- ```/sky130CircuitDesignWorkshop/design/sky130_fd_pr/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.corner.spice```
+    This file provides the corner model for the NFET, used for simulating different process variations.
+
+- ```/sky130CircuitDesignWorkshop/design/sky130_fd_pr/models/sky130.lib.pm3.spice```
+    This library file contains all the SPICE models for components in the Sky130 process node.
+
+#### Example
+```spice
+*Model Description
+.param temp=27
+
+
+*Including sky130 library files
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt    *tt - typical corner, if needed slow fast corner put sf
+
+
+*Netlist Description
+
+
+
+XM1 Vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=5 l=2
+
+R1 n1 in 55
+
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*simulation commands
+
+.op
+.dc Vdd 0 1.8 0.1 Vin 0 1.8 0.2              *sweeping Vds from 0 to 1.8 with a step of 0.1 and Vgs from 0 to 1.8 with a step of 0.2
+
+.control
+
+run
+display
+setplot dc1
+.endc
+
+.end
+```
+
+
+ - Running ngSPICE:
+  ``` ngspice day1_nfet_idvds_L2_W5.spice```
+
+ - To plot Vds :
+   ```plot -vdd#branch``` as the Vds is controlled by vdd value.
+   
+   <div align="center"><img width="1920" height="1020" alt="Screenshot 2025-10-17 003354" src="https://github.com/user-attachments/assets/aeafe19f-4ef1-4acf-a7c4-ee17a04f4fe2" /></div>
+
+   This is the graph for Id vs Vds for different Vgs values.
+   To get the values at particular points in the plot, click on that point, the corresponding x and y axis values will be shown in the terminal.
+
+<div align="center"><img width="1387" height="711" alt="image" src="https://github.com/user-attachments/assets/a8d0d004-90b9-420d-a002-2fd29aed1de0" /></div>
 
 
 
