@@ -167,7 +167,7 @@ setplot dc1
 
 
  - Running ngSPICE:
-  ``` ngspice day1_nfet_idvds_L2_W5.spice```
+  ``` $ngspice day1_nfet_idvds_L2_W5.spice```
 
  - To plot Vds :
    ```plot -vdd#branch``` as the Vds is controlled by vdd value.
