@@ -176,4 +176,35 @@ When Vin is:
 
 
  
+#### Modelling different measures as functions of Vin and Vout
 
+<div align="center"><img width="534" height="332" alt="image" src="https://github.com/user-attachments/assets/b77b6514-0437-47b0-8301-34feaa441eec" /></div>
+
+Converting Idsp in terms of Idsn:
+<div align="center"><img width="389" height="385" alt="image" src="https://github.com/user-attachments/assets/5972ffaf-6f8c-42f8-99b5-90ca23e45833" /></div>
+
+Converting Vdsp in terms of Vout:
+<div align="center"><img width="878" height="399" alt="image" src="https://github.com/user-attachments/assets/9a663425-2b0b-4db6-88d4-7e139decb0bc" /></div>
+
+Load Curve for a PMOS transistor (in a CMOS inverter): Idsn vs Vout (plotted above)
+
+<div align="center"><img width="919" height="396" alt="image" src="https://github.com/user-attachments/assets/21f86ed6-0988-415e-901b-1c67ba4457ad" /></div>
+
+Load Curve for NMOS transistor (in a CMOS inverter): Idsn vs Vout (plotted above)
+
+
+#### Merging PMOS and NMOS load curves and plotting Voltage Transfer Characteristics
+Vin and Vout are common to PMOS and NMOS. Graphically, we will pick up the Vin points from the intersection of corresponding load lines.
+
+
+
+<div align="center">
+    <div style="display: inline-block; margin: 10px;">
+        <img width="987" height="382" alt="image" src="https://github.com/user-attachments/assets/aa578fc2-378e-4bc2-992d-92f120e4bcf3" />
+        <p></p>
+    </div>
+    <div style="display: inline-block; margin: 10px;">
+        <img width="472" height="356" alt="image" src="https://github.com/user-attachments/assets/9e703467-6fbc-4aba-9cf2-41c124a043ef" />
+        <p></p>
+    </div>
+</div>
