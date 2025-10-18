@@ -1,4 +1,4 @@
-# Day3
+# Day3 : CMOS switching threshold and dynamic solutions
 ---
 
 ### Voltage transfer characteristics for CMOS inverter : SPICE Simulations
