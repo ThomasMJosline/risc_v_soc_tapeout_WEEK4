@@ -1,6 +1,5 @@
-# Day2
+# Day2 :  SPICE simulation for lower nodes and Velocity saturation effect
 ---
-# SPICE simulation for lower nodes and Velocity saturation effect
 
 ## SPICE simulation for lower nodes
 
