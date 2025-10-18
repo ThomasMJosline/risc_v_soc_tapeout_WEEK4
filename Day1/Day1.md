@@ -1,4 +1,4 @@
-# Day1
+# Day1 : Basics of NMOS Drain current (Id) vs Drain to Source voltage (Vds)
 ---
 
 ## Introduction to Circuit design & SPICE simulations
